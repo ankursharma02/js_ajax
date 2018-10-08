@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>
+            Json and Ajax
+        </title>
+    </head>
+    <body>
+        <header>
+            <h1>Json and Ajax </h1>
+            <button id="btn">Fetch info for 3 New Animal</button>
+            </header>
+
+        <div id="animal-info"></div>  
+    </body>
+    <script src="http://127.0.0.1:8887/Animal_json.json"></script>
+    <script>
+        
+       var animalContainer=document.getElementById("animal-info"); 
+      var btn=document.getElementById("btn");
+    btn.addEventListener("click",function(){
+        var ourRequest=new XMLHttpRequest();
+    ourRequest.open("get","http://127.0.0.1:8887/Animal_json.json");
+    ourRequest.onload=function(){
+        var ourData= JSON.parse(ourRequest.responseText);
+        renderHTML(ourData);
+    };
+    ourRequest.send();
+     });
+    function renderHTML(data)
+    {
+        var htmlstr="";
+        for(i=0;i<data.length;i++)
+        htmlstr+="<p>"+data[i].name+" is a "+data[i].species+".</p>";
+        animalContainer.insertAdjacentHTML('beforeend',htmlstr);
+
+
+    }
+    </script>
+</html>

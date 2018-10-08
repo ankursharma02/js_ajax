@@ -1,0 +1,43 @@
+<html>
+   <body>
+      <script language = "javascript" type = "text/javascript">
+                //Browser Support Code
+         function ajaxFunction() {
+            var ajaxRequest;  // The variable that makes Ajax possible!
+
+            try {
+               // Opera 8.0+, Firefox, Safari 
+               ajaxRequest = new XMLHttpRequest();
+               document.write(ajaxRequest);
+            } catch (e) {
+
+               // Internet Explorer Browsers
+               try {
+                  ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                  document.write(ajaxRequest);
+               } catch (e) {
+                  
+                  try {
+                     ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                     document.write(ajaxRequest);
+                  } catch (e) {
+
+                     // Something went wrong
+                     alert("Your browser broke!");
+                     
+                     return false;
+                  }
+               }
+             //  document.write(ajaxRequest.ActiveXObject);
+            }
+         }
+         //-->
+      </script>
+      
+      <form name = 'myForm'>
+         Name: <input type = 'text' name = 'username' /> <br />
+         Time: <input type = 'text' name = 'time' onclick="ajaxFunction()" />
+      </form>
+      
+   </body>
+</html>
